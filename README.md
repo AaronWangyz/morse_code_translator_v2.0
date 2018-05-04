@@ -1,5 +1,4 @@
 # Morse Code Translator, v2.0
-# Yezhen Wang
 # May 4, 2018
 
 ## Assumptions and Limitations:
