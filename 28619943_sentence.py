@@ -25,7 +25,7 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: April 30, 2018                                        #
-# Last Modified: April 30, 2018, 06:24 PM                             #
+# Last Modified: May 4, 2018, 01:30 PM                                #
 #                                                                     #
 #######################################################################
 
@@ -42,11 +42,11 @@ class SentenceAnalyser:
 
     def __str__(self):
         # initialize output variable with a header
-        output = "\n\nCharacter occurrence: \n"
+        output = "\nSentence occurrence: \n"
 
         # loop through "sent_occ" and concatenate keys and values
         for keys, values in self.sent_occ.items():
-            output += "Morse Code: " + keys + "\n" + "Value: " + str(values) + "\n"
+            output += "Sentence: " + keys + "\n" + "Occurrence: " + str(values) + "\n"
 
         return output
 

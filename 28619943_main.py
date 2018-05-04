@@ -1,6 +1,12 @@
 #######################################################################
 #                                                                     #
-# TO BE WROTE                                                         #
+# This is the master file of this assignment.                         #
+#                                                                     #
+# It combines the decoder, character analyzer, word analyzer, and     #
+# sentence analyzer together by invoking the classes created.         #
+#                                                                     #
+# This file will take user input, try to translate, and eventually    #
+# provide the analysis result of user input.                          #
 #                                                                     #
 #######################################################################
 #                                                                     #
@@ -9,7 +15,18 @@
 #######################################################################
 #                                                                     #
 #                               Usage                                 #
-# TO BE WROTE                                                         #
+#                                                                     #
+# System firstly prompt for user input with some instructions, user   #
+# get to put some Morse codes as input, but the pattern is limited by #
+# regular expression. User may enter an empty string as an indication #
+# of stop inputting.                                                  #
+#                                                                     #
+# After empty string is detected, system will print the Morse codes   #
+# received, translated messaged, and some proper error message if     #
+# there's any.                                                        #
+#                                                                     #
+# In the end, an option menu will pop out and ask user to choose      #
+# among the options provided.                                         #
 #                                                                     #
 #######################################################################
 #                                                                     #
@@ -17,7 +34,7 @@
 # Student ID: 2861 9943                                               #
 # Email: ywan0072@student.monash.edu                                  #
 # Date Created: April 30, 2018                                        #
-# Last Modified: April 30, 2018, 08:05 PM                             #
+# Last Modified: May 4, 2018, 02:43 PM                                #
 #                                                                     #
 #######################################################################
 
@@ -41,7 +58,7 @@ if __name__ == "__main__":
     # declare a variable that stores a regexp statement will be used to limit user action
     # regexp work as: one or many 0 or 1s, followed by zero or three asterisk
     #                 ending in six 0 or 1s. The pattern appears at least once.
-    valid_input = "^([01]+(\*+|([*]{3})+))+[01]{6}$"
+    valid_input = "^([01]+(\*?|([*]{3})?))+[01]{6}$"
 
     # declare a list to take user inputs
     user_input = []
@@ -99,10 +116,10 @@ if __name__ == "__main__":
     for each in decoded_list:
         print(each)
 
+    # remove the error messages stored in the "decoded_list"
+    for each in decoded_list:
         if each == "(Error: Invalid Morse code detected!)":
             decoded_list.remove(each)
-
-    # remove the error messages stored in the "decoded_list"
 
     # perform all three analyses the decoded messages
     for each in decoded_list:
@@ -110,9 +127,28 @@ if __name__ == "__main__":
         word_analyzer.analyze_words(each)
         sent_analyzer.analyse_sentences(each)
 
-    # print the results of analyses
-    print(char_analyzer)
-    print(word_analyzer)
-    print(sent_analyzer)
+    while True:
+        analysis_choice = input("\n\nPlease select from the below menu options:\n"
+                                "1. Character Analysis Result\n"
+                                "2. Word Analysis Result\n"
+                                "3. Sentence Analysis Result\n"
+                                "4. Print the Morse code dictionary\n"
+                                "5. Quit\n")
+
+        # print the results of analyses
+        if analysis_choice == "1":
+            print(char_analyzer)
+        elif analysis_choice == "2":
+            print(word_analyzer)
+        elif analysis_choice == "3":
+            print(sent_analyzer)
+        elif analysis_choice == "4":
+            print(decoder)
+        elif analysis_choice == "5":
+            print("\nThank you! Have a good day!\n")
+            quit()
+        else:
+            print("\nInvalid input, please re-enter!")
+            continue
 
 
