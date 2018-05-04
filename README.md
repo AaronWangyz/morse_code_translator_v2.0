@@ -4,7 +4,7 @@
 ## Assumptions and Limitations:
 1.	“28619943_character.py”, “28619943_decoder.py”, “28619943_sentence.py”, and “28619943_word.py” are implemented as classes and are not executable, they are invoked in “28619943_main.py”.
 2.	As assignment 1, an improved regular expression “^([01]+(\*?|([*]{3})?))+[01]{6}$” is introduced to limit the user actions.
-# Pattern explained:
+### Pattern explained:
 “digit(s)*(**)digit(s)*(**)…(digits*6)”
 (Digits are limited as “1” or “0” s only)
 
